@@ -8,6 +8,8 @@
 *.log
 *.idb
 *.opendb
+*.ipch
+*.pdb
  
 # Packages #
 ############
