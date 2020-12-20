@@ -1,0 +1,2 @@
+D:\VisualStudioProjects\AyaServer\AyaServerFramework\Debug\AyaServerFramework.exe
+D:\VisualStudioProjects\AyaServer\AyaServerFramework\Debug\AyaServerFramework.pdb

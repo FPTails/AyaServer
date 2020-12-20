@@ -1,0 +1,2 @@
+D:\VisualStudioProjects\AyaServer\AyaServerFramework\x64\Debug\ServerProtocol.pdb
+D:\VisualStudioProjects\AyaServer\ServerProtocol\x64\Debug\ServerProtocol.pdb

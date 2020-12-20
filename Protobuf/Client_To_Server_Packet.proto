@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Client_To_Server;
+
+enum ProcotolType {
+    LOGIN_REQUEST = 0;
+    LOGIN_ACK = 1;
+  }
+
+message LoginRequest {
+  ProcotolType Protocol = 1;
+  string UserID = 2;
+  string AuthString = 3;
+}
+
+message LoginAck {
+  ProcotolType Protocol = 1;
+  uint32  Result = 2;
+  uint64  UserKey = 3;
+  string  UserID = 4;
+}
