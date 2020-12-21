@@ -39,14 +39,23 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, const AYA::Buffer& re
 
 	protocol_number = (Client_To_Server::ProcotolType)front_int_value;
 
-	if (Client_To_Server::ProcotolType::LOGIN_REQUEST == protocol_number)
+	try
 	{
-		protobuf::io::ArrayInputStream is(recieved_buffer.GetBuffer(), recieved_buffer.GetBufferSize());
-		Client_To_Server::LoginRequest src_login_request;
-		src_login_request.ParseFromZeroCopyStream(&is);
+		if (Client_To_Server::ProcotolType::LOGIN_REQUEST == protocol_number)
+		{
+			protobuf::io::ArrayInputStream is(recieved_buffer.GetBuffer(), recieved_buffer.GetBufferSize());
+			Client_To_Server::LoginRequest src_login_request;
+			src_login_request.ParseFromZeroCopyStream(&is);
 
-		LoginRequest(session, src_login_request);
+			LoginRequest(session, src_login_request);
+		}
 	}
+	catch (...)
+	{
+		printf("변조된 패킷으로 인해, 프로토콜 번호는 일치하지만 buffer deserialize 실패.\n");
+	}
+
+	
 }
 
 bool GameServerJob::LoginRequest(AYA::SessionObject* session, const Client_To_Server::LoginRequest& login_request)
