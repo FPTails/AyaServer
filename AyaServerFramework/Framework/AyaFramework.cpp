@@ -50,6 +50,8 @@ namespace AYA
 
 		m_is_run = true;
 
+		m_server_object.Start();
+
 		while (m_is_run)
 		{
 			// 뭔가 해야할 일 기술. 
@@ -64,22 +66,15 @@ namespace AYA
 	{
 		const int DEFAULT_FRAMEWORK_MAX_CLIENT = 1;
 		const int DEFAULT_FRAMEWORK_PORT = 11021;
+		const int DEFAULT_JOB_THREAD_COUNT = 1;
 
 		ServerInitData server_init_data;
-		server_init_data.WorkerThread = new WorkerThreadObject();
-		server_init_data.ServerAccepter = new Accepter();
-		server_init_data.ServerJob = new GameServerJob();
-
-		server_init_data.WorkerThread->Start(Util::GetSystemCoreCount() * 2);
-		server_init_data.WorkerThread->SetJob(server_init_data.ServerJob);
-		server_init_data.WorkerThread->SetAccepter(server_init_data.ServerAccepter);
-
-		server_init_data.ServerAccepter->SetMaxClient(DEFAULT_FRAMEWORK_MAX_CLIENT);
-		server_init_data.ServerAccepter->SetPort(DEFAULT_FRAMEWORK_PORT);
-		server_init_data.ServerAccepter->SetWorkerThreadCompletionPort(server_init_data.WorkerThread->GetCompletionPort());
+		server_init_data.Job = new GameServerJob();
+		server_init_data.Job_Thread_Count = DEFAULT_JOB_THREAD_COUNT;
+		server_init_data.Max_Client =  DEFAULT_FRAMEWORK_MAX_CLIENT;
+		server_init_data.Port = DEFAULT_FRAMEWORK_PORT;
+		server_init_data.Worker_Thread_Count = Util::GetSystemCoreCount() * 2;
 
 		m_server_object.Init(server_init_data);
-		m_server_object.Start();
-
 	}
 };

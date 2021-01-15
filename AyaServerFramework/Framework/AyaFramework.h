@@ -1,7 +1,6 @@
 #pragma once
 #include "../Core/CommonHeader/CommonHeader.h"
 #include "./AyaFrameworkInfo.h"
-#include "../Core/ThreadObject/ThreadObject.h"
 #include "../Network/ServerObject/AyaServerObject.h"
 #include <winsock2.h>
 

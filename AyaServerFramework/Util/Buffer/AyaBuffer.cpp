@@ -2,55 +2,47 @@
 
 namespace AYA
 {
-	
+	void Buffer::InitDefaultMember()
+	{
+		m_write_cursor = 0;
+		m_read_cursor = 0;
+		m_buffer_size = 0;
+		m_buffer_array = nullptr;
+	}
 
 	Buffer::Buffer()
 	{
-		m_curr_buffer_write_cursor = 0;
-		m_curr_buffer_read_cursor = 0;
-		m_buffer_size = 0;
-		m_buffer_data_size = 0;
-		m_buffer_array = nullptr;
+		InitDefaultMember();
 
 		Reserve(DEFAULT_BUFFER_RESERVE_SIZE);
 	}
 	
 	Buffer::Buffer(int reserved_size)
 	{
-		m_curr_buffer_write_cursor = 0;
-		m_curr_buffer_read_cursor = 0;
-		m_buffer_size = 0;
-		m_buffer_data_size = 0;
-		m_buffer_array = nullptr;
+		InitDefaultMember();
 
 		Reserve(reserved_size);
 	}
 
 	Buffer::Buffer(char* original_buffer_address, int original_buffer_size)
 	{
-		m_curr_buffer_write_cursor = 0;
-		m_curr_buffer_read_cursor = 0;
-		m_buffer_size = 0;
-		m_buffer_array = nullptr;
-
-		if (DEFAULT_BUFFER_RESERVE_SIZE < original_buffer_size)
-		{
-			Reserve(original_buffer_size);
-		}
-		else
-		{
-			Reserve(DEFAULT_BUFFER_RESERVE_SIZE);
-		}
+		InitDefaultMember();
 		
+		Reserve(original_buffer_size);
 
 		std::memcpy(m_buffer_array, original_buffer_address, original_buffer_size);
+	}
 
-		m_buffer_data_size = original_buffer_size;
+	Buffer::Buffer(const Buffer& p)
+	{
+		InitDefaultMember();
+
+		Copy(p);
 	}
 
 	Buffer::~Buffer()
 	{
-		delete[] m_buffer_array;
+		Release();
 	}
 
 	void Buffer::Release()
@@ -61,9 +53,44 @@ namespace AYA
 			m_buffer_array = nullptr;
 		}
 		
-		m_curr_buffer_write_cursor = 0;
-		m_curr_buffer_read_cursor = 0;
+		m_write_cursor = 0;
+		m_read_cursor = 0;
 		m_buffer_size = 0;
+	}
+
+	bool Buffer::CheckValidCursor(int cursor) const
+	{
+		if (0 > cursor)
+		{
+			return false;
+		}
+
+		if (m_write_cursor < cursor)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	bool Buffer::CheckValidBufferSize(int size)
+	{
+		if (0 >= size)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	bool Buffer::HasEnoughBufferSize(int size)
+	{
+		if (m_buffer_size < size)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	bool Buffer::Copy(const Buffer& org_buffer)
@@ -71,32 +98,31 @@ namespace AYA
 		if (m_buffer_size < org_buffer.GetBufferDataSize())
 		{
 			Resize(org_buffer.GetBufferDataSize());
-			m_buffer_size = org_buffer.GetBufferSize();
 		}
 
 		std::memcpy(m_buffer_array, org_buffer.GetBuffer(), org_buffer.GetBufferDataSize());
 
-		m_curr_buffer_write_cursor = 0;
-		m_curr_buffer_read_cursor = 0;
-		m_buffer_data_size = org_buffer.GetBufferDataSize();
+		m_write_cursor = 0;
+		m_read_cursor = 0;
+		m_write_cursor = org_buffer.GetBufferDataSize();
 
 		return true;
 	}
 
 	void Buffer::Clear()
 	{
-		m_curr_buffer_write_cursor = 0;
-		m_curr_buffer_read_cursor = 0;
+		m_write_cursor = 0;
+		m_read_cursor = 0;
 	}
 
 	bool Buffer::Resize(int new_size)
 	{
-		if (0 >= new_size)
+		if (false == CheckValidBufferSize(new_size))
 		{
 			return false;
 		}
 
-		if (m_buffer_size >= new_size)
+		if (HasEnoughBufferSize(new_size))
 		{
 			return true;
 		}
@@ -127,22 +153,22 @@ namespace AYA
 
 	bool Buffer::MoveReadCursor(int data_size)
 	{
-		int new_cursor = m_curr_buffer_read_cursor + data_size;
+		int new_cursor = m_read_cursor + data_size;
 
 		// 커서를 옮기는게 불가능함 ( 들어가 있는 데이터 사이즈보다 크게 커서를 옮기려고 함 )
-		if (m_curr_buffer_write_cursor <= new_cursor)
+		if (m_write_cursor <= new_cursor)
 		{
 			return false;
 		}
 
-		m_curr_buffer_read_cursor = new_cursor;
+		m_read_cursor = new_cursor;
 
 		return true;
 	}
 
 	bool Buffer::MoveWriteCursor(int data_size)
 	{
-		int new_cursor = m_curr_buffer_write_cursor + data_size;
+		int new_cursor = m_write_cursor + data_size;
 
 		// 커서를 옮기는게 불가능함 ( 쓰기 커서가 현재 버퍼 총 사이즈보다 커지려고 시도함)
 		if (m_buffer_size <= new_cursor)
@@ -150,7 +176,7 @@ namespace AYA
 			return false;
 		}
 
-		m_curr_buffer_write_cursor = new_cursor;
+		m_write_cursor = new_cursor;
 
 		return true;
 	}
@@ -161,7 +187,7 @@ namespace AYA
 		int data_size = sizeof(int);
 
 		// 이전 커서 위치 획득 
-		int prev_cursor = m_curr_buffer_read_cursor;
+		int prev_cursor = m_read_cursor;
 
 		// 커서 이동 실패시 충분히 데이터가 들어있지 않은 것임.
 		if (false == MoveReadCursor(data_size))
@@ -177,12 +203,17 @@ namespace AYA
 		return true;
 	}
 
-	const bool Buffer::FrontInt(int& out_value) const
+	const bool Buffer::FrontInt(int cursor, int& out_value) const
 	{
+		if (false == CheckValidCursor(cursor))
+		{
+			return false;
+		}
+
 		int ret_value = 0;
 		int data_size = sizeof(int);
 
-		std::memcpy(&ret_value, &m_buffer_array[0], data_size);
+		std::memcpy(&ret_value, &m_buffer_array[cursor], data_size);
 
 		out_value = ret_value;
 
@@ -202,19 +233,17 @@ namespace AYA
 	bool Buffer::SetInt(int& value)
 	{
 		int data_size = sizeof(int);
-		int new_buffer_size = m_curr_buffer_write_cursor + data_size;
+		int new_buffer_size = m_write_cursor + data_size;
 
-		// 현재 버퍼 사이즈가 새로운 사이즈보다 커지면
-		if (m_buffer_size < new_buffer_size)
+		if (false == HasEnoughBufferSize(new_buffer_size))
 		{
-			// 새로 버퍼 확보 
 			if (false == Reserve(DEFAULT_BUFFER_RESERVE_SIZE))
 			{
 				return false;
 			}
 		}
 
-		int prev_write_cursor = m_curr_buffer_write_cursor;
+		int prev_write_cursor = m_write_cursor;
 
 		if (false == MoveWriteCursor(data_size))
 		{
@@ -222,8 +251,6 @@ namespace AYA
 		}
 
 		std::memcpy(&m_buffer_array[prev_write_cursor], &value, data_size);
-
-		m_buffer_data_size = new_buffer_size;
 
 		return true;
 	}

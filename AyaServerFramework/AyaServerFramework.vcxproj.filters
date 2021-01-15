@@ -27,9 +27,6 @@
     <ClCompile Include="Framework\AyaFrameworkInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\ThreadObject\ThreadObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Network\AddrIn\AyaAddrin.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -60,6 +57,24 @@
     <ClCompile Include="Util\Logger\Logger.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Network\ServerObject\User\UserManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\ServerObject\User\UserObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\ServerObject\ServerJob\IAyaJobInterface.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ThreadObject\JobThreadObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ThreadObject\IoHandler\IOHandler.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ThreadObject\WorkerThreadObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\AyaFramework.h">
@@ -72,9 +87,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\AsyncHandler\AyaAbstractAsyncResultHandler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\ThreadObject\ThreadObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Network\AddrIn\AyaAddrin.h">
@@ -120,6 +132,27 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Util\Logger\Logger.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\ServerObject\User\UserManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\ServerObject\User\UserObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ThreadObject\JobThreadObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ThreadObject\IoHandler\IOHandler.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\ServerObject\ServerInitData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ThreadObject\WorkerThreadObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ThreadObject\WorkerThreadInitData.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

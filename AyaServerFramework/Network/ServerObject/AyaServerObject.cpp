@@ -4,28 +4,41 @@ namespace AYA
 {
 	ServerObject::ServerObject()
 	{
-		m_worker_thread = nullptr;
-		m_server_job = nullptr;
-		m_accepter = nullptr;
+		
 	}
 
 	ServerObject::~ServerObject()
 	{
+		m_worker_thread.Stop();
 
+		m_job_thread.Stop();
 	}
 
 	bool ServerObject::Init(ServerInitData& server_init_data)
 	{
-		m_worker_thread = server_init_data.WorkerThread;
-		m_server_job = server_init_data.ServerJob;
-		m_accepter = server_init_data.ServerAccepter;
+		m_job_thread.Init(server_init_data);
+
+		WorkerThreadInitData worker_init_data;
+		worker_init_data._Accepter = &m_accepter;
+		worker_init_data.Job = server_init_data.Job;
+		worker_init_data.Worker_Thread_Count = server_init_data.Worker_Thread_Count;
+		m_worker_thread.Init(worker_init_data);
+
+		AccepterInitData accpet_init_data;
+		accpet_init_data.Max_Client = server_init_data.Max_Client;
+		accpet_init_data.Port = server_init_data.Port;
+		accpet_init_data.Worker_Thread_Handle = m_worker_thread.GetCompletionPort();
+		m_accepter.Init(accpet_init_data);
 
 		return true;
 	}
 
 	bool ServerObject::Start()
 	{
-		if (false == m_accepter->Open())
+		m_worker_thread.Start();
+		m_job_thread.Start();
+
+		if (false == m_accepter.Open())
 		{
 			false;
 		}

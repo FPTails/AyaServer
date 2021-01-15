@@ -16,12 +16,12 @@ GameServerJob::~GameServerJob()
 
 void GameServerJob::OnConnect(AYA::SessionObject* session)
 {
-
+	// todo. 유저 객체 생성. 하지만 인증은 받지 않은 상태. 
 }
 
 void GameServerJob::OnDisconnect(AYA::SessionObject* session)
 {
-
+	// todo. 유저 객체 삭제. 
 }
 
 void GameServerJob::OnMessage(AYA::SessionObject* session, const AYA::Buffer& recieved_buffer)
@@ -35,7 +35,7 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, const AYA::Buffer& re
 	Client_To_Server::ProcotolType protocol_number = Client_To_Server::ProcotolType::ProcotolType_INT_MIN_SENTINEL_DO_NOT_USE_;
 
 	int front_int_value = 0;
-	recieved_buffer.FrontInt(front_int_value);
+	recieved_buffer.FrontInt(0, front_int_value);
 
 	protocol_number = (Client_To_Server::ProcotolType)front_int_value;
 

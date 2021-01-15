@@ -10,7 +10,15 @@ namespace AYA
 		Buffer();
 		Buffer(int reserved_size);
 		Buffer(char* original_buffer_address, int original_buffer_size);
+		Buffer(const Buffer& p);
 		~Buffer();
+
+		Buffer& operator = (const Buffer& p) {
+			
+			Copy(p);
+
+			return *this;
+		}
 
 	public:
 		bool Resize(int new_size);
@@ -21,26 +29,30 @@ namespace AYA
 	public:
 		char* GetBuffer() const { return m_buffer_array; }
 		const int GetBufferSize() const { return m_buffer_size; }
-		const int GetBufferDataSize() const { return m_buffer_data_size; }
+		const int GetBufferDataSize() const { return m_write_cursor; }
 
 	public:
-		const bool FrontInt(int& out_value) const;
+		const bool FrontInt(int cursor, int& out_value) const;
 		bool GetInt(int& out_value);
 		bool GetBigInt(long& out_value);
 		bool GetString(std::wstring& out_wstr);
 
-		bool SetInt(int& out_value);
-		bool SetBigInt(long& out_value);
-		bool SetString(std::wstring& out_wstr);
+		bool SetInt(int& value);
+		bool SetBigInt(long& value);
+		bool SetString(std::wstring& value);
 	private:
 		bool MoveReadCursor(int data_size);
 		bool MoveWriteCursor(int data_size);
-	private:
-		int m_curr_buffer_read_cursor; // 현재 버퍼가 읽고 있는 위치를 가리키는 커서 
-		int m_curr_buffer_write_cursor; // 현재 버퍼가 쓰고 있는 위치를 가리키는 커서. 현재 버퍼에 데이터가 씌여진 크기이기도 함. 
+		void InitDefaultMember();
 
-		int m_buffer_data_size;
-		int m_buffer_size; // 버퍼의 사이즈 ( 할당된 크기 )
+		bool CheckValidCursor(int cursor) const;
+		bool CheckValidBufferSize(int size);
+		bool HasEnoughBufferSize(int size);
+	private:
+		int m_read_cursor; 
+		int m_write_cursor; 
+
+		int m_buffer_size;
 		char* m_buffer_array;
 
 	private:

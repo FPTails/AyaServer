@@ -13,6 +13,15 @@ namespace AYA
 		m_max_client = 0;
 	}
 
+	bool Accepter::Init(AccepterInitData& accpeter_init_data)
+	{
+		SetPort(accpeter_init_data.Port);
+		SetMaxClient(accpeter_init_data.Max_Client);
+		SetWorkerThreadHandle(accpeter_init_data.Worker_Thread_Handle);
+
+		return true;
+	}
+
 	bool Accepter::Open()
 	{
 		SocketOption socket_option;

@@ -18,4 +18,7 @@ public:
 	virtual void OnUpdate() override;
 private:
 	bool LoginRequest(AYA::SessionObject* session, const Client_To_Server::LoginRequest& login_request);
+
+private:
+	
 };
