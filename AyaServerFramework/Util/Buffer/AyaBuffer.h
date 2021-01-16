@@ -30,6 +30,7 @@ namespace AYA
 		char* GetBuffer() const { return m_buffer_array; }
 		const int GetBufferSize() const { return m_buffer_size; }
 		const int GetBufferDataSize() const { return m_write_cursor; }
+		const int GetReadCursor() const { return m_read_cursor; }
 
 	public:
 		const bool FrontInt(int cursor, int& out_value) const;

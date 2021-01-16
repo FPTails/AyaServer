@@ -156,7 +156,7 @@ namespace AYA
 		int new_cursor = m_read_cursor + data_size;
 
 		// 커서를 옮기는게 불가능함 ( 들어가 있는 데이터 사이즈보다 크게 커서를 옮기려고 함 )
-		if (m_write_cursor <= new_cursor)
+		if (m_write_cursor < new_cursor)
 		{
 			return false;
 		}
@@ -171,7 +171,7 @@ namespace AYA
 		int new_cursor = m_write_cursor + data_size;
 
 		// 커서를 옮기는게 불가능함 ( 쓰기 커서가 현재 버퍼 총 사이즈보다 커지려고 시도함)
-		if (m_buffer_size <= new_cursor)
+		if (m_buffer_size < new_cursor)
 		{
 			return false;
 		}
