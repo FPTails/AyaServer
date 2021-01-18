@@ -1,6 +1,7 @@
 #include "GameServerJob.h"
 #include <iostream>
 #include <fstream>
+#include "../../../Util/Buffer/AyaBufferStream.h"
 
 using namespace google;
 
@@ -24,7 +25,7 @@ void GameServerJob::OnDisconnect(AYA::SessionObject* session)
 	// todo. 유저 객체 삭제. 
 }
 
-void GameServerJob::OnMessage(AYA::SessionObject* session, const AYA::Buffer& recieved_buffer)
+void GameServerJob::OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved_buffer)
 {
 	// echo test 
 	/*AYA::Buffer temp_echo_buffer;
@@ -34,8 +35,10 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, const AYA::Buffer& re
 
 	Client_To_Server::ProcotolType protocol_number = Client_To_Server::ProcotolType::ProcotolType_INT_MIN_SENTINEL_DO_NOT_USE_;
 
+	AYA::BufferStream buffer_stream(&recieved_buffer);
+
 	int front_int_value = 0;
-	recieved_buffer.FrontInt(0, front_int_value);
+	buffer_stream.FrontInt(0, front_int_value);
 
 	protocol_number = (Client_To_Server::ProcotolType)front_int_value;
 

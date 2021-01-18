@@ -3,8 +3,6 @@
 
 void main()
 {
-	
-
 	AYA::Framework aya_framework;
 
 	AYA::FrameworkInfo framework_info;

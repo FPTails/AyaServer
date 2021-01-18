@@ -75,6 +75,9 @@
     <ClCompile Include="Core\ThreadObject\WorkerThreadObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Util\Buffer\AyaBufferStream.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\AyaFramework.h">
@@ -153,6 +156,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\ThreadObject\WorkerThreadInitData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Buffer\AyaBufferStream.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

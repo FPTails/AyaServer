@@ -14,7 +14,7 @@ public:
 public:
 	virtual void OnConnect(AYA::SessionObject* session) override;
 	virtual void OnDisconnect(AYA::SessionObject* session) override;
-	virtual void OnMessage(AYA::SessionObject* session, const AYA::Buffer& recieved_buffer) override;
+	virtual void OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved_buffer) override;
 	virtual void OnUpdate() override;
 private:
 	bool LoginRequest(AYA::SessionObject* session, const Client_To_Server::LoginRequest& login_request);

@@ -162,6 +162,7 @@
     <ClCompile Include="Network\Session\SessionObject.cpp" />
     <ClCompile Include="Network\Socket\AyaSocket.cpp" />
     <ClCompile Include="Util\Buffer\AyaBuffer.cpp" />
+    <ClCompile Include="Util\Buffer\AyaBufferStream.cpp" />
     <ClCompile Include="Util\Logger\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,7 @@
     <ClInclude Include="Network\Session\SessionObject.h" />
     <ClInclude Include="Network\Socket\AyaSocket.h" />
     <ClInclude Include="Util\Buffer\AyaBuffer.h" />
+    <ClInclude Include="Util\Buffer\AyaBufferStream.h" />
     <ClInclude Include="Util\Logger\Logger.h" />
     <ClInclude Include="Util\Singleton\Singleton.h" />
     <ClInclude Include="Util\System\System.h" />
