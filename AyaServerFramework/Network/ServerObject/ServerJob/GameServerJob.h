@@ -3,7 +3,7 @@
 #include "../../../Core/ThreadObject/IAyaJobInterface.h"
 #include "../../Session/SessionObject.h"
 #include <Client_To_Server_Packet/Client_To_Server_Packet.pb.h>
-
+#include "../User/UserManager.h"
 
 class GameServerJob : public AYA::IJobInterface
 {
@@ -20,5 +20,5 @@ private:
 	bool LoginRequest(AYA::SessionObject* session, const Client_To_Server::LoginRequest& login_request);
 
 private:
-	
+	UserManager m_user_manager;
 };
