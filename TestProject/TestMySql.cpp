@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include <mysql.h>
-// #include <atlstr.h> 
+#include <atlstr.h> 
 
 #pragma comment(lib, "libmysql.lib")
 
@@ -20,8 +20,8 @@ namespace TestDataBase
 			AUTH_TOKEN = 1
 		};
 
-		std::string Test_User_Id = "test_user";
-		std::string Test_User_Auth_Token = "test_token_string";
+		std::wstring Test_User_Id = L"test_user";
+		std::wstring Test_User_Auth_Token = L"test_token_string";
 
 		bool MySqlConnect(MYSQL& my_sql)
 		{
@@ -61,13 +61,13 @@ namespace TestDataBase
 			auto sql_result = mysql_store_result(&my_sql);
 			
 			MYSQL_ROW sql_row;
-			std::string selected_id = "";
-			std::string selected_auth_token = "";
+			std::wstring selected_id = L"";
+			std::wstring selected_auth_token = L"";
 
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL)
 			{
-				selected_id = sql_row[TEST_ACCOUNT_COLUMN::ID];
-				selected_auth_token = sql_row[TEST_ACCOUNT_COLUMN::AUTH_TOKEN];
+				selected_id = CA2W(sql_row[TEST_ACCOUNT_COLUMN::ID]);
+				selected_auth_token = CA2W(sql_row[TEST_ACCOUNT_COLUMN::AUTH_TOKEN]);
 				break;
 			}
 
@@ -99,13 +99,13 @@ namespace TestDataBase
 			auto sql_result = mysql_store_result(&my_sql);
 
 			MYSQL_ROW sql_row;
-			std::string selected_id = "";
-			std::string selected_auth_token = "";
+			std::wstring selected_id = L"";
+			std::wstring selected_auth_token = L"";
 
 			while ((sql_row = mysql_fetch_row(sql_result)) != NULL)
 			{
-				selected_id = sql_row[TEST_ACCOUNT_COLUMN::ID];
-				selected_auth_token = sql_row[TEST_ACCOUNT_COLUMN::AUTH_TOKEN];
+				selected_id = CA2W(sql_row[TEST_ACCOUNT_COLUMN::ID]);
+				selected_auth_token = CA2W(sql_row[TEST_ACCOUNT_COLUMN::AUTH_TOKEN]);
 				break;
 			}
 
