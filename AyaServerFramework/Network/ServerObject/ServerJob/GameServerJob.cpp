@@ -38,7 +38,11 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved
 	AYA::BufferStream buffer_stream(&recieved_buffer);
 
 	int front_int_value = 0;
-	buffer_stream.FrontInt(0, front_int_value);
+
+	if (false == buffer_stream.FrontInt(0, front_int_value))
+	{
+		return;
+	}
 
 	protocol_number = (Client_To_Server::ProcotolType)front_int_value;
 
@@ -63,6 +67,8 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved
 
 bool GameServerJob::LoginRequest(AYA::SessionObject* session, const Client_To_Server::LoginRequest& login_request)
 {
+	// todo. mysql을 통해 id / pw 조회하여 인증할 것. 단 , pw는 base64로 인코딩 되어 서버가 몰라야 함. 
+
 	return true;
 }
 

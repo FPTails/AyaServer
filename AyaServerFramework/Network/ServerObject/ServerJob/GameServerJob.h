@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IAyaJobInterface.h"
+#include "../../../Core/ThreadObject/IAyaJobInterface.h"
 #include "../../Session/SessionObject.h"
 #include <Client_To_Server_Packet/Client_To_Server_Packet.pb.h>
 

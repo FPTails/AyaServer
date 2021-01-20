@@ -11,7 +11,7 @@ namespace AYA
 
 		Buffer();
 		Buffer(unsigned int reserved_size);
-		Buffer(char* original_buffer_address, unsigned int original_buffer_size);
+		Buffer(char* original_buffer_address, unsigned int original_buffer_data_size);
 		Buffer(const Buffer& p);
 		~Buffer();
 

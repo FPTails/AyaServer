@@ -1,13 +1,16 @@
 #include "IOHandler.h"
 #include "../../../Network/Session/SessionObject.h"
-#include "../../../Network/ServerObject/ServerJob/IAyaJobInterface.h"
 #include "../../../Network/Acceptor/AyaAccepter.h"
+
 
 namespace AYA
 {
 	IoHandler::IoHandler()
 	{
-		
+		m_job_scheduler = nullptr;
+		m_job = nullptr;
+		m_accepter = nullptr;
+		m_worker_thread_handle = INVALID_HANDLE_VALUE;
 	}
 
 	IoHandler::~IoHandler()
@@ -18,6 +21,7 @@ namespace AYA
 	bool IoHandler::Init(WorkerThreadInitData& server_init_data)
 	{
 		m_job = server_init_data.Job;
+		m_job_scheduler = server_init_data._JobScheduler;
 		m_accepter = server_init_data._Accepter;
 		m_worker_thread_handle = server_init_data.WorkerThreadHandle;
 
@@ -108,7 +112,7 @@ namespace AYA
 		JobData job_data;
 		job_data.RecievedBuffer = recieved_buffer;
 		job_data.RecievedSession = session_object;
-		m_job->PushJob(job_data);
+		m_job_scheduler->PushJob(job_data);
 
 		session_object->OnRecieve();
 	}

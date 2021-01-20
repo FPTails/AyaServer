@@ -146,6 +146,7 @@
     <ClCompile Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.cpp" />
     <ClCompile Include="Core\Overlapped\OverlappedIOManager.cpp" />
     <ClCompile Include="Core\ThreadObject\IoHandler\IOHandler.cpp" />
+    <ClCompile Include="Core\ThreadObject\JobScheduler\JobScheduler.cpp" />
     <ClCompile Include="Core\ThreadObject\JobThreadObject.cpp" />
     <ClCompile Include="Core\ThreadObject\WorkerThreadObject.cpp" />
     <ClCompile Include="Framework\AyaFramework.cpp" />
@@ -155,7 +156,6 @@
     <ClCompile Include="Network\AddrIn\AyaAddrin.cpp" />
     <ClCompile Include="Network\ServerObject\AyaServerObject.cpp" />
     <ClCompile Include="Network\ServerObject\ServerJob\GameServerJob.cpp" />
-    <ClCompile Include="Network\ServerObject\ServerJob\IAyaJobInterface.cpp" />
     <ClCompile Include="Network\ServerObject\User\UserManager.cpp" />
     <ClCompile Include="Network\ServerObject\User\UserObject.cpp" />
     <ClCompile Include="Network\Session\SessionManager.cpp" />
@@ -172,6 +172,7 @@
     <ClInclude Include="Core\Overlapped\OverlappedData.h" />
     <ClInclude Include="Core\Overlapped\OverlappedIOManager.h" />
     <ClInclude Include="Core\ThreadObject\IoHandler\IOHandler.h" />
+    <ClInclude Include="Core\ThreadObject\JobScheduler\JobScheduler.h" />
     <ClInclude Include="Core\ThreadObject\JobThreadObject.h" />
     <ClInclude Include="Core\ThreadObject\WorkerThreadInitData.h" />
     <ClInclude Include="Core\ThreadObject\WorkerThreadObject.h" />
@@ -182,7 +183,7 @@
     <ClInclude Include="Network\ServerObject\AyaServerObject.h" />
     <ClInclude Include="Network\ServerObject\ServerInitData.h" />
     <ClInclude Include="Network\ServerObject\ServerJob\GameServerJob.h" />
-    <ClInclude Include="Network\ServerObject\ServerJob\IAyaJobInterface.h" />
+    <ClInclude Include="Core\ThreadObject\IAyaJobInterface.h" />
     <ClInclude Include="Network\ServerObject\User\UserManager.h" />
     <ClInclude Include="Network\ServerObject\User\UserObject.h" />
     <ClInclude Include="Network\Session\SessionManager.h" />

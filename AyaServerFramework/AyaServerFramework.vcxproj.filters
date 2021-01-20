@@ -63,9 +63,6 @@
     <ClCompile Include="Network\ServerObject\User\UserObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Network\ServerObject\ServerJob\IAyaJobInterface.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Core\ThreadObject\JobThreadObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -76,6 +73,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Util\Buffer\AyaBufferStream.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ThreadObject\JobScheduler\JobScheduler.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,9 +125,6 @@
     <ClInclude Include="Util\Buffer\AyaBuffer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Network\ServerObject\ServerJob\IAyaJobInterface.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Network\ServerObject\ServerJob\GameServerJob.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -159,6 +156,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Util\Buffer\AyaBufferStream.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ThreadObject\JobScheduler\JobScheduler.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ThreadObject\IAyaJobInterface.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

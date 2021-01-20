@@ -3,6 +3,7 @@
 #include "../../Overlapped/OverlappedData.h"
 #include <unordered_map>
 #include "../WorkerThreadInitData.h"
+#include "../JobScheduler/JobScheduler.h"
 
 namespace AYA
 {
@@ -44,5 +45,6 @@ namespace AYA
 		IJobInterface* m_job;
 		HANDLE m_worker_thread_handle;
 		Accepter* m_accepter;
+		JobScheduler* m_job_scheduler;
 	};
 }

@@ -1,11 +1,9 @@
 #include "JobThreadObject.h"
-#include "../../Network/ServerObject/ServerJob/IAyaJobInterface.h"
 
 namespace AYA
 {
 	JobThreadObject::JobThreadObject()
 	{
-		m_job = nullptr;
 		m_is_run = false;
 		m_job_thread_count = 0;
 	}
@@ -22,12 +20,7 @@ namespace AYA
 			return false;
 		}
 
-		if (nullptr != m_job)
-		{
-			return false;
-		}
-
-		m_job = init_data.Job;
+		m_job_scheduler.SetJob(init_data.Job);
 
 		m_job_thread_count = init_data.Job_Thread_Count;
 
@@ -66,7 +59,7 @@ namespace AYA
 	{
 		while (m_is_run)
 		{
-			m_job->Update();
+			m_job_scheduler.Update();
 		}
 	}
 }

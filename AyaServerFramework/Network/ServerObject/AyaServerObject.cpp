@@ -21,6 +21,7 @@ namespace AYA
 		WorkerThreadInitData worker_init_data;
 		worker_init_data._Accepter = &m_accepter;
 		worker_init_data.Job = server_init_data.Job;
+		worker_init_data._JobScheduler = &(m_job_thread.GetJobScheduler());
 		worker_init_data.Worker_Thread_Count = server_init_data.Worker_Thread_Count;
 		m_worker_thread.Init(worker_init_data);
 

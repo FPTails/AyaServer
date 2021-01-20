@@ -3,6 +3,7 @@
 #include <list>
 #include <thread>
 #include "../../Network/ServerObject/ServerInitData.h"
+#include "JobScheduler/JobScheduler.h"
 
 namespace AYA
 {
@@ -19,12 +20,12 @@ namespace AYA
 		bool Start();
 		bool Stop();
 
-		inline IJobInterface* GetJob() { return m_job; }
+		inline JobScheduler& GetJobScheduler() { return m_job_scheduler; }
 	private:
 		void JobThread();
 
 	private:
-		IJobInterface* m_job;
+		JobScheduler m_job_scheduler;
 		std::list<std::thread> m_job_thread_pool;
 		int m_job_thread_count;
 		bool m_is_run;

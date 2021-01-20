@@ -2,9 +2,6 @@
 #include <thread>
 #include "../../Network/Session/SessionObject.h"
 
-#include "../../Network/ServerObject/ServerJob/IAyaJobInterface.h"
-
-
 namespace AYA
 {
 	WorkerThreadObject::WorkerThreadObject()

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./ServerJob/IAyaJobInterface.h"
+#include "../../Core/ThreadObject/IAyaJobInterface.h"
 
 namespace AYA
 {

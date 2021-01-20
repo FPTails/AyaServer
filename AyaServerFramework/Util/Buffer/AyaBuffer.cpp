@@ -23,13 +23,15 @@ namespace AYA
 		Reserve(reserved_size);
 	}
 
-	Buffer::Buffer(char* original_buffer_address, unsigned int original_buffer_size)
+	Buffer::Buffer(char* original_buffer_address, unsigned int original_buffer_data_size)
 	{
 		InitDefaultMember();
 		
-		Reserve(original_buffer_size);
+		Reserve(original_buffer_data_size);
 
-		std::memcpy(m_buffer_array, original_buffer_address, original_buffer_size);
+		m_data_size = original_buffer_data_size;
+
+		std::memcpy(m_buffer_array, original_buffer_address, original_buffer_data_size);
 	}
 
 	Buffer::Buffer(const Buffer& p)
