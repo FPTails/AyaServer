@@ -116,13 +116,13 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir);D:\VisualStudioProjects\AyaServer\Include;D:\VisualStudioProjects\AyaServer\ServerProtocol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\MySQL\MySQL Server 8.0\include;$(SolutionDir);D:\VisualStudioProjects\AyaServer\Include;D:\VisualStudioProjects\AyaServer\ServerProtocol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\VisualStudioProjects\AyaServer\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;D:\VisualStudioProjects\AyaServer\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -144,6 +144,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.cpp" />
+    <ClCompile Include="Core\DataBase\Mysql\MysqlConnector.cpp" />
+    <ClCompile Include="Core\DataBase\Mysql\MysqlExecutor.cpp" />
+    <ClCompile Include="Core\DataBase\Mysql\MysqlQueryResult.cpp" />
+    <ClCompile Include="Core\DataBase\Mysql\MysqlRow.cpp" />
     <ClCompile Include="Core\Overlapped\OverlappedIOManager.cpp" />
     <ClCompile Include="Core\ThreadObject\IoHandler\IOHandler.cpp" />
     <ClCompile Include="Core\ThreadObject\JobScheduler\JobScheduler.cpp" />
@@ -169,6 +173,16 @@
     <ClInclude Include="Core\AsyncHandler\AyaAbstractAsyncResultHandler.h" />
     <ClInclude Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.h" />
     <ClInclude Include="Core\CommonHeader\CommonHeader.h" />
+    <ClInclude Include="Core\DataBase\DBConnectData.h" />
+    <ClInclude Include="Core\DataBase\IDbConnector.h" />
+    <ClInclude Include="Core\DataBase\IDbQueryExecutor.h" />
+    <ClInclude Include="Core\DataBase\IDbRow.h" />
+    <ClInclude Include="Core\DataBase\IDbQueryResult.h" />
+    <ClInclude Include="Core\DataBase\Mysql\MysqlConnector.h" />
+    <ClInclude Include="Core\DataBase\Mysql\MysqlEssential.h" />
+    <ClInclude Include="Core\DataBase\Mysql\MysqlExecutor.h" />
+    <ClInclude Include="Core\DataBase\Mysql\MysqlQueryResult.h" />
+    <ClInclude Include="Core\DataBase\Mysql\MysqlRow.h" />
     <ClInclude Include="Core\Overlapped\OverlappedData.h" />
     <ClInclude Include="Core\Overlapped\OverlappedIOManager.h" />
     <ClInclude Include="Core\ThreadObject\IoHandler\IOHandler.h" />

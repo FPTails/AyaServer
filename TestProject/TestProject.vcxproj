@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;D:\VisualStudioProjects\AyaServer\AyaServerFramework\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AyaBuffer.obj;AyaBufferStream.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AyaBuffer.obj;AyaBufferStream.obj;MysqlConnector.obj;MysqlExecutor.obj;MysqlQueryResult.obj;MysqlRow.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -165,11 +165,15 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TestBuffer.cpp" />
+    <ClCompile Include="TestMysqlConnector.cpp" />
+    <ClCompile Include="TestDbExecutor.cpp" />
     <ClCompile Include="TestMySql.cpp" />
+    <ClCompile Include="TestMysqlQueryResult.cpp" />
     <ClCompile Include="TestProject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TestDataBaseEssential.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AyaServerFramework\AyaServerFramework.vcxproj">

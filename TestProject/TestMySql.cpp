@@ -2,30 +2,19 @@
 #include "CppUnitTest.h"
 #include <mysql.h>
 #include <atlstr.h> 
-
-#pragma comment(lib, "libmysql.lib")
-
-#pragma comment(lib, "ws2_32.lib")  
+#include "TestDataBaseEssential.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace TestDataBase
 {
-	TEST_CLASS(MySqlBasic)
+	TEST_CLASS(MySqlBasicCase)
 	{
 	public:
-		enum TEST_ACCOUNT_COLUMN
-		{
-			ID = 0,
-			AUTH_TOKEN = 1
-		};
-
-		std::wstring Test_User_Id = L"test_user";
-		std::wstring Test_User_Auth_Token = L"test_token_string";
-
+		
 		bool MySqlConnect(MYSQL& my_sql)
 		{
-			return mysql_real_connect(&my_sql, "127.0.0.1", "root", "1q2w3e4r", "ayagamedb", 3306, NULL, 0);
+			return NULL != mysql_real_connect(&my_sql, "127.0.0.1", "root", "1q2w3e4r", "ayagamedb", 3306, NULL, 0);
 		}
 
 		TEST_METHOD(ConnectFunction)

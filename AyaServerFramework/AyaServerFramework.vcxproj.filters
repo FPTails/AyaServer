@@ -78,6 +78,18 @@
     <ClCompile Include="Core\ThreadObject\JobScheduler\JobScheduler.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Core\DataBase\Mysql\MysqlConnector.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\DataBase\Mysql\MysqlQueryResult.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\DataBase\Mysql\MysqlRow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\DataBase\Mysql\MysqlExecutor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\AyaFramework.h">
@@ -162,6 +174,36 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\ThreadObject\IAyaJobInterface.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\IDbConnector.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\DBConnectData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\IDbQueryExecutor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\IDbRow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\IDbQueryResult.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\Mysql\MysqlConnector.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\Mysql\MysqlQueryResult.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\Mysql\MysqlEssential.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\Mysql\MysqlRow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DataBase\Mysql\MysqlExecutor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
