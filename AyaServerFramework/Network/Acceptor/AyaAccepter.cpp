@@ -1,7 +1,6 @@
 #include "AyaAccepter.h"
 #include <MSWSock.h>
 #include <WinSock2.h>
-#include "../../Core/AsyncHandler/AyaAccpetAsyncResultHandler.h"
 
 
 namespace AYA

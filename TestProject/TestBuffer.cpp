@@ -41,11 +41,11 @@ namespace TestBuffer
 
 			int front_value = 0;
 
-			unsigned int before_front_buffer_data_size = buffer.GetDataSize();
+			int before_front_buffer_data_size = (int)buffer.GetDataSize();
 
 			buffer_stream.FrontInt(0, front_value);
 
-			unsigned int after_front_buffer_data_size = buffer.GetDataSize();
+			int after_front_buffer_data_size = (int)buffer.GetDataSize();
 
 			Assert::AreEqual(before_front_buffer_data_size, after_front_buffer_data_size);
 		}
@@ -56,14 +56,14 @@ namespace TestBuffer
 			AYA::BufferStream buffer_stream(&buffer);
 
 			int input_value = 1144;
-			unsigned int integer_size = sizeof(int);
+			int integer_size = sizeof(int);
 
 			bool set_int_result = buffer_stream.SetInt(input_value);
 
 			WCHAR logger_buffer[512];
 			wsprintf(logger_buffer, L"result:%d, input_size:%d, write_index:%d, buffer_size:%d", (int)set_int_result, integer_size, buffer.GetDataSize(), buffer.GetBufferSize());
 
-			Assert::AreEqual(integer_size, buffer.GetDataSize(), logger_buffer);
+			Assert::AreEqual(integer_size, (int)buffer.GetDataSize(), logger_buffer);
 		}
 
 		TEST_METHOD(GetIntIncreaseReadIndex)
@@ -114,14 +114,14 @@ namespace TestBuffer
 			AYA::BufferStream buffer_stream(&buffer);
 
 			short input_value = 72;
-			unsigned int short_size = sizeof(short);
+			int short_size = sizeof(short);
 
 			bool set_short_result = buffer_stream.SetShort(input_value);
 
 			WCHAR logger_buffer[512];
 			wsprintf(logger_buffer, L"result:%d, input_size:%d, write_index:%d, buffer_size:%d", (int)set_short_result, short_size, buffer.GetDataSize(), buffer.GetBufferSize());
 
-			Assert::AreEqual(short_size, buffer.GetDataSize(), logger_buffer);
+			Assert::AreEqual(short_size, (int)buffer.GetDataSize(), logger_buffer);
 		}
 
 		TEST_METHOD(GetShortIncreaseReadIndex)
@@ -172,14 +172,14 @@ namespace TestBuffer
 			AYA::BufferStream buffer_stream(&buffer);
 
 			long input_value = LONG_MAX;
-			unsigned int long_size = sizeof(long);
+			int long_size = sizeof(long);
 
 			bool set_long_result = buffer_stream.SetLong(input_value);
 
 			WCHAR logger_buffer[512];
 			wsprintf(logger_buffer, L"result:%d, input_size:%d, write_index:%d, buffer_size:%d", (int)set_long_result, long_size, buffer.GetDataSize(), buffer.GetBufferSize());
 
-			Assert::AreEqual(long_size, buffer.GetDataSize(), logger_buffer);
+			Assert::AreEqual(long_size, (int)buffer.GetDataSize(), logger_buffer);
 		}
 
 		TEST_METHOD(GetLongIncreaseReadIndex)
@@ -230,14 +230,14 @@ namespace TestBuffer
 			AYA::BufferStream buffer_stream(&buffer);
 
 			std::wstring input_value = L"this is test wstring";
-			unsigned int wstring_size = (sizeof(wchar_t) * input_value.length()) + sizeof(short); // wstring의 length 변수와 wstring buffer의 사이즈를 합한게 wstring size 
+			int wstring_size = ((int)sizeof(wchar_t) * (int)input_value.length()) + (int)sizeof(short); // wstring의 length 변수와 wstring buffer의 사이즈를 합한게 wstring size 
 
 			bool set_long_result = buffer_stream.SetString(input_value);
 
 			WCHAR logger_buffer[512];
-			wsprintf(logger_buffer, L"result:%d, input_size:%d, write_index:%d, buffer_size:%d", (int)set_long_result, wstring_size, buffer.GetDataSize(), buffer.GetBufferSize());
+			wsprintf(logger_buffer, L"result:%d, input_size:%d, write_index:%d, buffer_size:%d", (int)set_long_result, wstring_size, (int)buffer.GetDataSize(), buffer.GetBufferSize());
 
-			Assert::AreEqual(wstring_size, buffer.GetDataSize(), logger_buffer);
+			Assert::AreEqual(wstring_size, (int)buffer.GetDataSize(), logger_buffer);
 		}
 
 		TEST_METHOD(GetStringIncreaseReadIndex)

@@ -186,7 +186,7 @@ namespace AYA
 	bool BufferStream::SetString(std::wstring& value)
 	{
 		// 1) wstr size ∫Œ≈Õ ª¿‘ . 
-		short wstr_length =  value.length();
+		short wstr_length =  (short)value.length();
 
 		if (false == SetShort(wstr_length))
 		{

@@ -143,11 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.cpp" />
     <ClCompile Include="Core\DataBase\Mysql\MysqlConnector.cpp" />
     <ClCompile Include="Core\DataBase\Mysql\MysqlExecutor.cpp" />
     <ClCompile Include="Core\DataBase\Mysql\MysqlQueryResult.cpp" />
     <ClCompile Include="Core\DataBase\Mysql\MysqlRow.cpp" />
+    <ClCompile Include="Core\Memory\MemoryBlock.cpp" />
+    <ClCompile Include="Core\Memory\MemoryBlockPool.cpp" />
     <ClCompile Include="Core\Overlapped\OverlappedIOManager.cpp" />
     <ClCompile Include="Core\ThreadObject\IoHandler\IOHandler.cpp" />
     <ClCompile Include="Core\ThreadObject\JobScheduler\JobScheduler.cpp" />
@@ -172,8 +173,6 @@
     <ClCompile Include="Util\Logger\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\AsyncHandler\AyaAbstractAsyncResultHandler.h" />
-    <ClInclude Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.h" />
     <ClInclude Include="Core\CommonHeader\CommonHeader.h" />
     <ClInclude Include="Core\DataBase\DBConnectData.h" />
     <ClInclude Include="Core\DataBase\IDbConnector.h" />
@@ -185,6 +184,8 @@
     <ClInclude Include="Core\DataBase\Mysql\MysqlExecutor.h" />
     <ClInclude Include="Core\DataBase\Mysql\MysqlQueryResult.h" />
     <ClInclude Include="Core\DataBase\Mysql\MysqlRow.h" />
+    <ClInclude Include="Core\Memory\MemoryBlock.h" />
+    <ClInclude Include="Core\Memory\MemoryBlockPool.h" />
     <ClInclude Include="Core\Overlapped\OverlappedData.h" />
     <ClInclude Include="Core\Overlapped\OverlappedIOManager.h" />
     <ClInclude Include="Core\ThreadObject\IoHandler\IOHandler.h" />

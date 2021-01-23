@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <winsock2.h>
 #include <MSWSock.h>
-#include "../Core/AsyncHandler/AyaAbstractAsyncResultHandler.h"
 #include "../Network/ServerObject/ServerJob/GameServerJob.h"
 #include "../Util/System/System.h"
 

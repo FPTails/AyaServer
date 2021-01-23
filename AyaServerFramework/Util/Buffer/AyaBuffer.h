@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./AyaBufferStream.h"
+#include "../../Core/Memory/MemoryBlockPool.h"
 
 namespace AYA
 {
@@ -15,33 +16,36 @@ namespace AYA
 		Buffer(const Buffer& p);
 		~Buffer();
 
-		Buffer& operator = (const Buffer& p) {
+		Buffer& operator = (const Buffer& other) {
 			
-			Copy(p);
+			Copy(other);
 
 			return *this;
 		}
 
 	public:
-		bool Resize(unsigned int new_size);
-		bool Reserve(unsigned int reserve_size); // 추가로 확보할 메모리 사이즈
+		bool Resize(unsigned short new_size);
+		bool Reserve(unsigned short reserve_size); // 추가로 확보할 메모리 사이즈
 		void Clear(); // 재사용을 위한 초기화. 
 		bool Copy(const Buffer& org_buffer);
 		void Release();
 	public:
-		char* GetBuffer() const { return m_buffer_array; }
-		const unsigned int GetBufferSize() const { return m_buffer_size; }
-		const unsigned int GetDataSize() const { return m_data_size; }
+		char* GetBuffer() const { return m_memory_block.GetMemoryAddress(); }
+		const unsigned short GetBufferSize() const { return m_memory_block.GetBlockSize(); }
+		const unsigned short GetDataSize() const { return m_data_size; }
 		
 	private:
-		bool HasEnoughBufferSize(unsigned int size);
+		bool HasEnoughBufferSize(unsigned short size);
 		void InitDefaultMember();
-		bool CheckValidBufferSize(unsigned int size);
-		bool IncreateDataSize(unsigned int size);
+		bool CheckValidBufferSize(unsigned short size);
+		bool IncreateDataSize(unsigned short size);
 	private:
-		unsigned int m_data_size;
-		unsigned int m_buffer_size;
-		char* m_buffer_array;
+		unsigned short m_data_size;
+
+		MemoryBlock m_memory_block;
+
+		/*unsigned int m_buffer_size;
+		char* m_buffer_array;*/
 
 	private:
 		const int DEFAULT_BUFFER_RESERVE_SIZE = 512;

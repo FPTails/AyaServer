@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;D:\VisualStudioProjects\AyaServer\AyaServerFramework\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AyaBuffer.obj;AyaBufferStream.obj;MysqlConnector.obj;MysqlExecutor.obj;MysqlQueryResult.obj;MysqlRow.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AyaBuffer.obj;AyaBufferStream.obj;MysqlConnector.obj;MysqlExecutor.obj;MysqlQueryResult.obj;MysqlRow.obj;UserDbExecutor.obj;MemoryBlock.obj;MemoryBlockPool.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -164,12 +164,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TestBase64.cpp" />
     <ClCompile Include="TestBuffer.cpp" />
+    <ClCompile Include="TestMemoryBlock.cpp" />
+    <ClCompile Include="TestMemoryBlockPool.cpp" />
     <ClCompile Include="TestMysqlConnector.cpp" />
     <ClCompile Include="TestDbExecutor.cpp" />
     <ClCompile Include="TestMySql.cpp" />
     <ClCompile Include="TestMysqlQueryResult.cpp" />
     <ClCompile Include="TestProject.cpp" />
+    <ClCompile Include="TestUserDbExecutor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

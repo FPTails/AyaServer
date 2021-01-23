@@ -36,9 +36,6 @@
     <ClCompile Include="Network\ServerObject\AyaServerObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Network\Session\SessionObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -96,6 +93,12 @@
     <ClCompile Include="Network\ServerObject\DB\UserDbConfig.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Memory\MemoryBlock.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Memory\MemoryBlockPool.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\AyaFramework.h">
@@ -107,9 +110,6 @@
     <ClInclude Include="Framework\AyaFrameworkInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\AsyncHandler\AyaAbstractAsyncResultHandler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Network\AddrIn\AyaAddrin.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -117,9 +117,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Network\ServerObject\AyaServerObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\AsyncHandler\AyaAccpetAsyncResultHandler.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Network\Session\SessionObject.h">
@@ -222,6 +219,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Util\Path\SystemPath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Memory\MemoryBlock.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Memory\MemoryBlockPool.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
