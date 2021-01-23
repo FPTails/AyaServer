@@ -2,12 +2,26 @@
 #include <iostream>
 #include <fstream>
 #include "../../../Util/Buffer/AyaBufferStream.h"
+#include "../../../Util/Logger/Logger.h"
 
 using namespace google;
 
 GameServerJob::GameServerJob()
 {
+	UserDBConfig user_db_config;
+	AYA::DBConnectData userdb_connect_data;
 
+	if (false == user_db_config.ConvertTo(userdb_connect_data))
+	{
+		AYA::g_AYALogger->Log("User DB ini file load failed");
+		return;
+	}
+
+	if (false == m_user_db_executor.Init(userdb_connect_data))
+	{
+		AYA::g_AYALogger->Log("User Db connect failed");
+		return;
+	}
 }
 
 GameServerJob::~GameServerJob()

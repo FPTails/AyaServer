@@ -11,7 +11,7 @@ namespace AYA
 	// 단, Update는 하나의 쓰레드에서만 호출해야 한다. 여러쓰레드가 호출할시 문제가 생긴다. 
 	class Logger : public Singleton<Logger>
 	{
-	private:
+	public:
 		Logger();
 		~Logger();
 
@@ -29,6 +29,9 @@ namespace AYA
 		#define MAX_LOG_BUFFER_SIZE 4096
 		char m_log_buffer[MAX_LOG_BUFFER_SIZE];
 	};
+
+
 }
 
 #define g_AYALogger Logger::GetInstance()
+

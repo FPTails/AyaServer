@@ -90,6 +90,12 @@
     <ClCompile Include="Core\DataBase\Mysql\MysqlExecutor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Network\ServerObject\DB\UserDbExecutor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\ServerObject\DB\UserDbConfig.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\AyaFramework.h">
@@ -206,5 +212,20 @@
     <ClInclude Include="Core\DataBase\Mysql\MysqlExecutor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Network\ServerObject\DB\UserDbExecutor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Base64\Base64.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\ServerObject\DB\UserDbConfig.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Path\SystemPath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\DbConfig.ini" />
   </ItemGroup>
 </Project>

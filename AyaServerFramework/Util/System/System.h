@@ -12,5 +12,6 @@ namespace AYA
 			GetSystemInfo(&system_info);
 			return (int)system_info.dwNumberOfProcessors;
 		}
+
 	}
 }

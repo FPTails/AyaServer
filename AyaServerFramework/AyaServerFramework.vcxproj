@@ -159,6 +159,8 @@
     <ClCompile Include="Network\Acceptor\AyaAccepter.cpp" />
     <ClCompile Include="Network\AddrIn\AyaAddrin.cpp" />
     <ClCompile Include="Network\ServerObject\AyaServerObject.cpp" />
+    <ClCompile Include="Network\ServerObject\DB\UserDbConfig.cpp" />
+    <ClCompile Include="Network\ServerObject\DB\UserDbExecutor.cpp" />
     <ClCompile Include="Network\ServerObject\ServerJob\GameServerJob.cpp" />
     <ClCompile Include="Network\ServerObject\User\UserManager.cpp" />
     <ClCompile Include="Network\ServerObject\User\UserObject.cpp" />
@@ -195,6 +197,8 @@
     <ClInclude Include="Network\Acceptor\AyaAccepter.h" />
     <ClInclude Include="Network\AddrIn\AyaAddrin.h" />
     <ClInclude Include="Network\ServerObject\AyaServerObject.h" />
+    <ClInclude Include="Network\ServerObject\DB\UserDbConfig.h" />
+    <ClInclude Include="Network\ServerObject\DB\UserDbExecutor.h" />
     <ClInclude Include="Network\ServerObject\ServerInitData.h" />
     <ClInclude Include="Network\ServerObject\ServerJob\GameServerJob.h" />
     <ClInclude Include="Core\ThreadObject\IAyaJobInterface.h" />
@@ -206,13 +210,18 @@
     <ClInclude Include="Util\Buffer\AyaBuffer.h" />
     <ClInclude Include="Util\Buffer\AyaBufferStream.h" />
     <ClInclude Include="Util\Logger\Logger.h" />
+    <ClInclude Include="Util\Path\SystemPath.h" />
     <ClInclude Include="Util\Singleton\Singleton.h" />
+    <ClInclude Include="Util\Base64\Base64.h" />
     <ClInclude Include="Util\System\System.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServerProtocol\ServerProtocol.vcxproj">
       <Project>{a2aa9c87-32fc-4b7e-b35c-f50e628a1e7b}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\DbConfig.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
