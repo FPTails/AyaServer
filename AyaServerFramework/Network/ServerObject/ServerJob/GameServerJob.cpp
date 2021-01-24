@@ -4,8 +4,6 @@
 #include "../../../Util/Buffer/AyaBufferStream.h"
 #include "../../../Util/Logger/Logger.h"
 
-using namespace google;
-
 GameServerJob::GameServerJob()
 {
 	UserDBConfig user_db_config;
@@ -31,12 +29,13 @@ GameServerJob::~GameServerJob()
 
 void GameServerJob::OnConnect(AYA::SessionObject* session)
 {
-	// todo. 유저 객체 생성. 하지만 인증은 받지 않은 상태. 
+	m_user_manager.CreateUserOnSessionConnect(session->GetSessionIndex());
 }
 
 void GameServerJob::OnDisconnect(AYA::SessionObject* session)
 {
 	// todo. 유저 객체 삭제. 
+	m_user_manager.ReleaseUserOnSessionDisconnect(session->GetSessionIndex());
 }
 
 void GameServerJob::OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved_buffer)
@@ -47,28 +46,22 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved
 
 	session->Send(temp_echo_buffer);*/
 
-	Client_To_Server::ProcotolType protocol_number = Client_To_Server::ProcotolType::ProcotolType_INT_MIN_SENTINEL_DO_NOT_USE_;
+	int protocol_number = 0;
 
 	AYA::BufferStream buffer_stream(&recieved_buffer);
 
-	int front_int_value = 0;
-
-	if (false == buffer_stream.FrontInt(0, front_int_value))
+	if (false == buffer_stream.FrontInt(0, protocol_number))
 	{
 		return;
 	}
 
-	protocol_number = (Client_To_Server::ProcotolType)front_int_value;
-
 	try
 	{
-		if (Client_To_Server::ProcotolType::LOGIN_REQUEST == protocol_number)
+		if (Client_To_Server::CLIENT_TO_SERVER_PROTOCOL_NUMBER::LOGIN_REQUEST == protocol_number)
 		{
-			protobuf::io::ArrayInputStream is(recieved_buffer.GetBuffer(), recieved_buffer.GetBufferSize());
-			Client_To_Server::LoginRequest src_login_request;
-			src_login_request.ParseFromZeroCopyStream(&is);
-
-			LoginRequest(session, src_login_request);
+			Client_To_Server::LoginRequest login_request;
+			buffer_stream >> login_request;
+			LoginRequest(session, login_request);
 		}
 	}
 	catch (...)
@@ -81,7 +74,30 @@ void GameServerJob::OnMessage(AYA::SessionObject* session, AYA::Buffer& recieved
 
 bool GameServerJob::LoginRequest(AYA::SessionObject* session, const Client_To_Server::LoginRequest& login_request)
 {
-	// todo. mysql을 통해 id / pw 조회하여 인증할 것. 단 , pw는 base64로 인코딩 되어 서버가 몰라야 함. 
+	// todo. 임시 패킷 구조만 잡은 것이므로, 로그인 실패시 ack 해주는 패킷은 패킷 제너레이터 작성 이후에 붙이도록 한다. 
+
+	std::wstring valid_password = L"";
+
+	if (false == m_user_db_executor.SelectPassword(login_request.Id, valid_password))
+	{
+		// todo. 실패 패킷 전송. 
+		return false;
+	}
+
+	// db에는 암호화된 password가 저장되어 있다. 클라도 암호화된 password를 보낸다. 
+	if (valid_password != login_request.Password)
+	{
+		// todo. 실패 패킷 전송 ( 비밀번호 틀림 ) 
+		return false;
+	}
+
+	UserLoginData login_data;
+
+	if (false == m_user_manager.UserLogin(login_data))
+	{
+		// todo. 실패 패킷 전송 ( 로그인 실패 )
+		return false;
+	}
 
 	return true;
 }

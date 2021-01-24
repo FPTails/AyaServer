@@ -43,7 +43,7 @@ namespace AYA
 
 		m_query_result.ResetResult();
 
-		mysql_query(m_connector.GetMysql(), "select id, auth_token from useraccount where id = 'test_user'");
+		mysql_query(m_connector.GetMysql(), query_str);
 		mysql_errno(m_connector.GetMysql());
 
 		return &m_query_result;

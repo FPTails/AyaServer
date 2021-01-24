@@ -12,6 +12,66 @@ namespace AYA
 		BufferStream(Buffer* buffer);
 		~BufferStream();
 
+#pragma region Shift Opertor Overloading
+
+		friend AYA::BufferStream& operator<<(AYA::BufferStream& stream, int& write)
+		{
+			stream.SetInt(write);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator<<(AYA::BufferStream& stream, long& write)
+		{
+			stream.SetLong(write);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator<<(AYA::BufferStream& stream, std::wstring& write)
+		{
+			stream.SetString(write);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator<<(AYA::BufferStream& stream, short& write)
+		{
+			stream.SetShort(write);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator>>(AYA::BufferStream& stream, int& read)
+		{
+			stream.GetInt(read);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator>>(AYA::BufferStream& stream, long& read)
+		{
+			stream.GetLong(read);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator>>(AYA::BufferStream& stream, std::wstring& read)
+		{
+			stream.GetString(read);
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator>>(AYA::BufferStream& stream, short& read)
+		{
+			stream.GetShort(read);
+
+			return stream;
+		}
+
+#pragma endregion
+
 		const int GetReadIndex() const { return m_read_index; }
 		const int GetWriteIndex() const { return m_write_index; }
 	public:

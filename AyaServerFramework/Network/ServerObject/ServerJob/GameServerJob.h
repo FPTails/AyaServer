@@ -2,7 +2,7 @@
 
 #include "../../../Core/ThreadObject/IAyaJobInterface.h"
 #include "../../Session/SessionObject.h"
-#include <Client_To_Server_Packet/Client_To_Server_Packet.pb.h>
+#include "../Protocol/ClientToServer.h"
 #include "../User/UserManager.h"
 #include "../DB/UserDbExecutor.h"
 #include "../DB/UserDbConfig.h"

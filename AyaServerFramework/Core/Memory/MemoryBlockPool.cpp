@@ -1,4 +1,5 @@
 #include "MemoryBlockPool.h"
+#include <Windows.h>
 
 namespace AYA
 {
@@ -22,6 +23,7 @@ namespace AYA
 		MemoryBlock block;
 
 		char* new_block_address = new char[size];
+		ZeroMemory(new_block_address, size);
 
 		if (false == block.Init(new_block_address, size))
 		{

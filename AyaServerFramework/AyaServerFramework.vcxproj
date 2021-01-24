@@ -200,6 +200,7 @@
     <ClInclude Include="Network\ServerObject\AyaServerObject.h" />
     <ClInclude Include="Network\ServerObject\DB\UserDbConfig.h" />
     <ClInclude Include="Network\ServerObject\DB\UserDbExecutor.h" />
+    <ClInclude Include="Network\ServerObject\Protocol\ClientToServer.h" />
     <ClInclude Include="Network\ServerObject\ServerInitData.h" />
     <ClInclude Include="Network\ServerObject\ServerJob\GameServerJob.h" />
     <ClInclude Include="Core\ThreadObject\IAyaJobInterface.h" />

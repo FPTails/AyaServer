@@ -13,5 +13,5 @@ public:
 		AUTH_TOKEN = 1
 	};
 
-	bool SelectPassword(std::wstring& user_id, std::wstring& out_selected_password);
+	bool SelectPassword(const std::wstring& user_id, std::wstring& out_selected_password);
 };

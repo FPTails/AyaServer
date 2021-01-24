@@ -2,7 +2,7 @@
 #include <atlstr.h> 
 // #include <atlconv.h>
 
-bool UserDBExecutor::SelectPassword(std::wstring& user_id, std::wstring& out_selected_password)
+bool UserDBExecutor::SelectPassword(const std::wstring& user_id, std::wstring& out_selected_password)
 {
 	std::string converted_user_id (CW2A(user_id.c_str()));
 

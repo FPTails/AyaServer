@@ -278,4 +278,165 @@ namespace TestBuffer
 			Assert::AreEqual(input_value, output_value, logger_buffer);
 		}
 	};
+
+	class TestSubSerializableObject
+	{
+	public:
+		int IntegerData;
+		long LongData;
+
+		friend AYA::BufferStream& operator<<(AYA::BufferStream& stream, TestSubSerializableObject& write)
+		{
+			stream << write.IntegerData;
+			stream << write.LongData;
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator>>(AYA::BufferStream& stream, TestSubSerializableObject& read)
+		{
+			stream >> read.IntegerData;
+			stream >> read.LongData;
+
+			return stream;
+		}
+
+		bool TestSubSerializableObject::operator==(const TestSubSerializableObject& other) const
+		{
+			if (this->IntegerData != other.IntegerData)
+			{
+				return false;
+			}
+
+			if (this->LongData != other.LongData)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		bool TestSubSerializableObject::operator!=(const TestSubSerializableObject& other) const
+		{
+			if (this->IntegerData == other.IntegerData)
+			{
+				return false;
+			}
+
+			if (this->LongData == other.LongData)
+			{
+				return false;
+			}
+
+			return true;
+		}
+	};
+
+	class TestSerializableObject
+	{
+	public:
+		int IntegerData;
+		std::list<TestSubSerializableObject> SubObjectList;
+		std::wstring WstringData;
+
+		friend AYA::BufferStream& operator<<(AYA::BufferStream& stream, TestSerializableObject& write)
+		{
+			stream << write.IntegerData;
+
+			{
+				short list_size = (short)write.SubObjectList.size();
+				stream << list_size;
+
+				for (auto& sub_object : write.SubObjectList)
+				{
+					stream << sub_object;
+				}
+			}
+
+			stream << write.WstringData;
+
+			return stream;
+		}
+
+		friend AYA::BufferStream& operator>>(AYA::BufferStream& stream, TestSerializableObject& read)
+		{
+			stream >> read.IntegerData;
+
+			{
+				short list_size = 0;
+				stream >> list_size;
+
+				for (short i = 0; i < list_size; ++i)
+				{
+					TestSubSerializableObject sub_object;
+					stream >> sub_object;
+					read.SubObjectList.push_back(sub_object);
+				}
+			}
+
+			stream >> read.WstringData;
+
+			return stream;
+		}
+
+		bool TestSerializableObject::operator==(const TestSerializableObject& other) const
+		{
+			if (this->IntegerData != other.IntegerData)
+			{
+				return false;
+			}
+
+			if (this->WstringData != other.WstringData)
+			{
+				return false;
+			}
+
+			if (this->SubObjectList.size() != other.SubObjectList.size())
+			{
+				return false;
+			}
+
+			auto list_size = this->SubObjectList.size();
+			auto this_list_iter = this->SubObjectList.begin();
+			auto other_list_iter = other.SubObjectList.begin();
+
+			for (size_t i = 0; i < list_size; ++i, ++this_list_iter, ++other_list_iter)
+			{
+				if ( (*this_list_iter) != (*other_list_iter))
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+	};
+
+	TEST_CLASS(CustomCase)
+	{
+		TEST_METHOD(CustomSerilizeValid)
+		{
+			TestSerializableObject original_custom_object;
+			original_custom_object.IntegerData = 44;
+			original_custom_object.WstringData = L"TestWstringValue";
+
+			for (int i = 1; i <= 4; ++i)
+			{
+				TestSubSerializableObject sub_object;
+				sub_object.IntegerData = i;
+				sub_object.LongData = (long)(i * 10000);
+				original_custom_object.SubObjectList.push_back(sub_object);
+			}
+
+			AYA::Buffer buffer;
+			AYA::BufferStream buffer_stream(&buffer);
+			buffer_stream << original_custom_object;
+
+			TestSerializableObject deserilize_custom_object;
+			buffer_stream >> deserilize_custom_object;
+
+			Assert::IsTrue(original_custom_object == deserilize_custom_object);
+		}
+	};
+
 }

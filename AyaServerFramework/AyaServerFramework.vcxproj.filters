@@ -227,6 +227,9 @@
     <ClInclude Include="Core\Memory\MemoryBlockPool.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Network\ServerObject\Protocol\ClientToServer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\DbConfig.ini" />

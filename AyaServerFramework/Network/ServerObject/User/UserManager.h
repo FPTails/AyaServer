@@ -29,10 +29,10 @@ private:
 	void PushUserObject(UserObjectSmartPointer released_user_object);
 
 	bool CachingUserKeyDictionary(UserObjectSmartPointer new_user_object);
-	UserObjectSmartPointer UnCachingUserKeyDictionary(UserObjectSmartPointer released_user_object);
+	bool UnCachingUserKeyDictionary(UserObjectSmartPointer released_user_object);
 
 	bool CachingSessionKeyDictionary(UserObjectSmartPointer new_user_object);
-	UserObjectSmartPointer UnCachingSessionKeyDictionary(UserObjectSmartPointer released_user_object);
+	bool UnCachingSessionKeyDictionary(UserObjectSmartPointer released_user_object);
 
 private:
 	UserObjectMemoryPoolList m_userobject_memory_pool;
