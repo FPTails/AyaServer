@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -118,6 +118,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files\MySQL\MySQL Server 8.0\include;$(SolutionDir);D:\VisualStudioProjects\AyaServer\Include;D:\VisualStudioProjects\AyaServer\ServerProtocol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -168,6 +169,10 @@
     <ClCompile Include="Network\Session\SessionManager.cpp" />
     <ClCompile Include="Network\Session\SessionObject.cpp" />
     <ClCompile Include="Network\Socket\AyaSocket.cpp" />
+    <ClCompile Include="Network\Socket\AyaUdpSocket.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Util\Buffer\AyaBuffer.cpp" />
     <ClCompile Include="Util\Buffer\AyaBufferStream.cpp" />
     <ClCompile Include="Util\Logger\Logger.cpp" />
@@ -209,6 +214,9 @@
     <ClInclude Include="Network\Session\SessionManager.h" />
     <ClInclude Include="Network\Session\SessionObject.h" />
     <ClInclude Include="Network\Socket\AyaSocket.h" />
+    <ClInclude Include="Network\Socket\AyaUdpSocket.h" />
+    <ClInclude Include="Network\Socket\SocketOption.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="Util\Buffer\AyaBuffer.h" />
     <ClInclude Include="Util\Buffer\AyaBufferStream.h" />
     <ClInclude Include="Util\Logger\Logger.h" />
@@ -223,6 +231,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="Config\DbConfig.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

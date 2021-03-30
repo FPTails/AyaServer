@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AYA::IDBConnector">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAAACABAAAAA=</HashCode>
+      <FileName>Core\DataBase\IDbConnector.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::IDBQueryExecutor">
+    <Position X="15.5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAAAACAAAAAAA=</HashCode>
+      <FileName>Core\DataBase\IDbQueryExecutor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::IDBRow">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataBase\IDbRow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::IDBQueryResult">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataBase\IDbQueryResult.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::MysqlConnector">
+    <Position X="13.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAAAAAAABAAAAAIIAAAACAAAAAAAACAhAAAAI=</HashCode>
+      <FileName>Core\DataBase\Mysql\MysqlConnector.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::MysqlExecutor">
+    <Position X="15.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAEFAAAAAAAAAAAAAAgAAAACAAIAAAA=</HashCode>
+      <FileName>Core\DataBase\Mysql\MysqlExecutor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::MysqlQueryResult">
+    <Position X="17.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EgEAAEAAAAAAAAAAAABAAAAQSAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataBase\Mysql\MysqlQueryResult.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::MysqlRow">
+    <Position X="15.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAABAAAAAAAAAAAAAgACAAA=</HashCode>
+      <FileName>Core\DataBase\Mysql\MysqlRow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::MemoryBlock">
+    <Position X="1.75" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAIAAAAAAAAAIAAACAAEAAAAAIAAAqABBAAAA=</HashCode>
+      <FileName>Core\Memory\MemoryBlock.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::MemoryBlockPool">
+    <Position X="1.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAABAIAAQAAAAAAAIACAAAIEAAAAAAAACgA=</HashCode>
+      <FileName>Core\Memory\MemoryBlockPool.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::OveralppedIOManager">
+    <Position X="5" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAACEAAIAABAgBCAAAAAAA=</HashCode>
+      <FileName>Core\Overlapped\OverlappedIOManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::IJobInterface">
+    <Position X="6.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAAEABAA=</HashCode>
+      <FileName>Core\ThreadObject\IAyaJobInterface.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::JobScheduler">
+    <Position X="3.25" Y="17" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACAABAAQCAAAAAAAgAAAAEAACAAgAAAAAAAAI=</HashCode>
+      <FileName>Core\ThreadObject\JobScheduler\JobScheduler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::JobThreadObject">
+    <Position X="0.75" Y="15.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAgACAAAAAAAAEgAAAgAAAgAACAIAACAAAAAAI=</HashCode>
+      <FileName>Core\ThreadObject\JobThreadObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::Framework">
+    <Position X="0.5" Y="23.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAoCAAAAAAAAAAAAAAAIAgAAAAAAACBAAAAAA=</HashCode>
+      <FileName>Framework\AyaFramework.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::ServerObject">
+    <Position X="2.5" Y="25.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIQCAAAAAAAAAAAAQABAAAAAAAAAICAAAAAAA=</HashCode>
+      <FileName>Network\ServerObject\AyaServerObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::Buffer">
+    <Position X="1.75" Y="8.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAIABAAAAAICAAEAAAAwAAAAAAAAAqABFQYAA=</HashCode>
+      <FileName>Util\Buffer\AyaBuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::BufferStream">
+    <Position X="5.5" Y="8.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAwCQGABABIIAEECBAAAAAAgAgAgAAAEAACAQKA=</HashCode>
+      <FileName>Util\Buffer\AyaBufferStream.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::Logger">
+    <Position X="8.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAABAAIAAAAAAAAAIAAAAAgAAAABAAAAAAAAAIA=</HashCode>
+      <FileName>Util\Logger\Logger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserDBConfig">
+    <Position X="17.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAIAAAAIAAAgAQAQAAAAACAAAAQAAAAAAAA=</HashCode>
+      <FileName>Network\ServerObject\DB\UserDbConfig.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserDBExecutor">
+    <Position X="15.75" Y="13" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="UserDBExecutor::USER_DB_COLUMN" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Network\ServerObject\DB\UserDbExecutor.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\ServerObject\DB\UserDbExecutor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameServerJob">
+    <Position X="6.25" Y="19.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAABAAAAAAAAAUAAAQAACAAAFABAA=</HashCode>
+      <FileName>Network\ServerObject\ServerJob\GameServerJob.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserManager">
+    <Position X="8.5" Y="20.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>EAACAAmCIAUAAAQAEAAAAAIAIAgAAAAAIAgAAACAAAg=</HashCode>
+      <FileName>Network\ServerObject\User\UserManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserObject">
+    <Position X="12.75" Y="20.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAgAAAIAAAAAAAAAEAAAAYICAAAAAAAAAQAQAAAIA=</HashCode>
+      <FileName>Network\ServerObject\User\UserObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAACCAAAAABAAAAAEAAAAAAAAAAAQ=</HashCode>
+      <FileName>Util\Singleton\Singleton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client_To_Server::PacketHeader">
+    <Position X="11.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\ServerObject\Protocol\ClientToServer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client_To_Server::LoginRequest">
+    <Position X="11.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Network\ServerObject\Protocol\ClientToServer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::SessionObject">
+    <Position X="4.5" Y="32.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CEEAAKAAAADBEABAAMAAAAAAgAAEAAEAAAAAkACEBAA=</HashCode>
+      <FileName>Network\Session\SessionObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::Accepter">
+    <Position X="19.5" Y="26" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AYAAAAAIACAAIUAIAAEAAAAAAAAEABIAEAACIAAAgCA=</HashCode>
+      <FileName>Network\Acceptor\AyaAccepter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::IoHandler">
+    <Position X="16.5" Y="26" Width="2.75" />
+    <NestedTypes>
+      <Typedef Name="AYA::IoHandler::IOHandlerFunction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Core\ThreadObject\IoHandler\IOHandler.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAYAAAAACABRAgAAAAAAFEAACAAAACAAABAAA=</HashCode>
+      <FileName>Core\ThreadObject\IoHandler\IOHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::WorkerThreadObject">
+    <Position X="16.5" Y="22" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>CAAEBAAAAiAAAAAABAABCAAAAAAgAAAAIgACAAAQAgA=</HashCode>
+      <FileName>Core\ThreadObject\WorkerThreadObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::AddrInfo">
+    <Position X="11.25" Y="34.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAABAAAQAAAAAAAAAAAAAQAAgAAAAAAAAA=</HashCode>
+      <FileName>Network\AddrIn\AyaAddrin.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::SessionObjectManager">
+    <Position X="0.5" Y="32.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAGEACAAAAAAAIAAAAQAQAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Network\Session\SessionManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AYA::Socket">
+    <Position X="7" Y="32.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAQACAAAAAAiAEAQAIAAAIAgAQAAAAEAAACAAAA=</HashCode>
+      <FileName>Network\Socket\AyaSocket.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AYA::DBConnectData">
+    <Position X="19.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAEAAAAAAAAAAAAAACAAACAACAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataBase\DBConnectData.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::JobData">
+    <Position X="3.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ThreadObject\JobScheduler\JobScheduler.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::FrameworkInfo">
+    <Position X="2.5" Y="23.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCA=</HashCode>
+      <FileName>Framework\AyaFrameworkInfo.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::ServerInitData">
+    <Position X="4.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAADAACAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Network\ServerObject\ServerInitData.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="UserLoginData">
+    <Position X="8.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\ServerObject\User\UserObject.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::OverlappedData">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAABAAgAAAEAAAQAA=</HashCode>
+      <FileName>Core\Overlapped\OverlappedData.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::IORequestData">
+    <Position X="20.5" Y="22" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ThreadObject\IoHandler\IOHandler.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::WorkerThreadInitData">
+    <Position X="20.5" Y="23.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAABAAAAAAAAAAAAAAACAAAAAAAAACIAAAA=</HashCode>
+      <FileName>Core\ThreadObject\WorkerThreadInitData.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::AccepterInitData">
+    <Position X="22.5" Y="26" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Network\Acceptor\AyaAccepter.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AYA::SocketOption">
+    <Position X="11.25" Y="32.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAKAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\Socket\AyaSocket.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

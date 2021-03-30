@@ -16,7 +16,8 @@ namespace AYA
 		Buffer(const Buffer& p);
 		~Buffer();
 
-		Buffer& operator = (const Buffer& other) {
+		Buffer& operator = (const Buffer& other) 
+		{
 			
 			Copy(other);
 

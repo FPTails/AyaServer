@@ -1,21 +1,11 @@
 #pragma once
 
-#include <memory>
 #include "../AddrIn/AyaAddrin.h"
 #include "../../Core/Overlapped/OverlappedData.h"
+#include "SocketOption.h"
 
 namespace AYA
 {
-	// todo. recv, send 등을 정의할 것. 
-	// friend로 팩토리를 정의하고 pricate 으로 생성자 제한할까 ? 
-
-	struct SocketOption
-	{
-		const char* IP = nullptr;
-		short Port = 0;
-		bool Is_Listen = false;
-	};
-
 	class Socket
 	{
 	public:

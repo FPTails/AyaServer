@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include "MemoryBlock.h"
-#include <memory>
 
 namespace AYA
 {

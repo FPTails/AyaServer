@@ -1,13 +1,15 @@
+#include "stdafx.h"
+#include "Util/System/System.h"
 #include "JobScheduler.h"
+
 
 namespace AYA
 {
-	JobScheduler::JobScheduler()
+	JobScheduler::JobScheduler(unsigned short update_milliseconds) : m_update_elapsed_time(update_milliseconds)
 	{
 		m_job = nullptr;
-		m_current_write_index = 0;
-		m_read_index = 0;
-		m_next_write_index = 0;
+
+		m_next_update_time = Util::CurrentTimeStamp() + update_milliseconds;
 	}
 
 	JobScheduler::~JobScheduler()
@@ -17,7 +19,17 @@ namespace AYA
 
 	void JobScheduler::Update()
 	{
-		if (m_next_write_index == m_read_index)
+		// 아직 업데이트 할 때가 안됨. 
+		if (false == IsUpdateTime())
+		{
+			return;
+		}
+
+		// 다음 업데이트 시간 결정. 
+		DecideNextUpdateTime();
+
+		// 업데이트 시간이 됐지만 잡 queue가 비어 있음. 
+		if (m_job_queue.empty())
 		{
 			return;
 		}
@@ -30,29 +42,28 @@ namespace AYA
 		}
 	}
 
+	bool JobScheduler::IsUpdateTime()
+	{
+		if (Util::CurrentTimeStamp() < m_next_update_time)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	void JobScheduler::DecideNextUpdateTime()
+	{
+		m_next_update_time = Util::CurrentTimeStamp() + m_update_elapsed_time;
+	}
+
 	void JobScheduler::PushJob(JobData& job_data)
 	{
-		int max_job_count = MAX_JOB_COUNT;
-		m_current_write_index.compare_exchange_weak(max_job_count, 0);
-
-		auto& current_new_job_data = m_job_array[m_current_write_index.fetch_add(1)];
-		current_new_job_data.RecievedSession = job_data.RecievedSession;
-		current_new_job_data.RecievedBuffer = job_data.RecievedBuffer;
-
-		m_next_write_index = m_current_write_index.load(std::memory_order_acquire);
-		
+		m_job_queue.push(job_data);	
 	}
 
 	bool JobScheduler::PopJob(JobData& out_job_data)
 	{
-		int max_job_count = MAX_JOB_COUNT;
-		m_read_index.compare_exchange_weak(max_job_count, 0);
-
-		auto& poped_job_data = m_job_array[m_read_index.fetch_add(1)];
-
-		out_job_data.RecievedSession = poped_job_data.RecievedSession;
-		out_job_data.RecievedBuffer = poped_job_data.RecievedBuffer;
-
-		return true;
+		return m_job_queue.try_pop(out_job_data);
 	}
 }

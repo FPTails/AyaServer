@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;D:\VisualStudioProjects\AyaServer\AyaServerFramework\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AyaBuffer.obj;AyaBufferStream.obj;MysqlConnector.obj;MysqlExecutor.obj;MysqlQueryResult.obj;MysqlRow.obj;UserDbExecutor.obj;MemoryBlock.obj;MemoryBlockPool.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>stdafx.obj;AyaBuffer.obj;AyaBufferStream.obj;MysqlConnector.obj;MysqlExecutor.obj;MysqlQueryResult.obj;MysqlRow.obj;UserDbExecutor.obj;MemoryBlock.obj;MemoryBlockPool.obj;JobScheduler.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -166,6 +166,7 @@
     </ClCompile>
     <ClCompile Include="TestBase64.cpp" />
     <ClCompile Include="TestBuffer.cpp" />
+    <ClCompile Include="TestJobScheduler.cpp" />
     <ClCompile Include="TestMemoryBlock.cpp" />
     <ClCompile Include="TestMemoryBlockPool.cpp" />
     <ClCompile Include="TestMysqlConnector.cpp" />

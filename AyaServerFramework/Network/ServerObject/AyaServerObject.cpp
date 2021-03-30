@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "AyaServerObject.h"
 
 namespace AYA
@@ -29,6 +30,7 @@ namespace AYA
 		accpet_init_data.Max_Client = server_init_data.Max_Client;
 		accpet_init_data.Port = server_init_data.Port;
 		accpet_init_data.Worker_Thread_Handle = m_worker_thread.GetCompletionPort();
+		accpet_init_data.UdpPortBegin = server_init_data.Udp_Port_Begin;
 		m_accepter.Init(accpet_init_data);
 
 		return true;

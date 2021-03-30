@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "MysqlExecutor.h"
 
 namespace AYA

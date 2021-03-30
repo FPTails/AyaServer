@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "AyaSocket.h"
 
 namespace AYA

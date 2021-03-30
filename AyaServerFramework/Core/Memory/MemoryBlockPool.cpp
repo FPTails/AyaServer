@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include "MemoryBlockPool.h"
-#include <Windows.h>
 
 namespace AYA
 {

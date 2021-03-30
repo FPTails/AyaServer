@@ -29,6 +29,8 @@ namespace AYA
 		virtual void HandleDisconnect(IORequestData& completion_result_data, OverlappedData* io_data);
 		virtual void HandleSendComplete(IORequestData& completion_result_data, OverlappedData* io_data);
 		virtual void HandleRecieveMessage(IORequestData& completion_result_data, OverlappedData* io_data);
+		virtual void HandleSendToComplete(IORequestData& completion_result_data, OverlappedData* io_data);
+		virtual void HandleRecieveFromMessage(IORequestData& completion_result_data, OverlappedData* io_data);
 
 	public:
 		void HandleIoData(IORequestData& completion_result_data, OverlappedData* per_io_data);

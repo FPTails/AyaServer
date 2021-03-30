@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Socket/AyaSocket.h"
+#include "../Socket/AyaUdpSocket.h"
 #include <unordered_map>
 #include "../Session/SessionManager.h"
 #include "../../Network/ServerObject/ServerInitData.h"
@@ -17,6 +18,7 @@ namespace AYA
 	struct AccepterInitData
 	{
 		short Port;
+		short UdpPortBegin;
 		int Max_Client;
 		HANDLE Worker_Thread_Handle;
 	};
@@ -33,6 +35,9 @@ namespace AYA
 	public:
 		inline short GetPort() { return m_port; }
 		inline int GetMaxClient() { return m_max_client; }
+
+	private:
+		bool InitSessionUdpSocket(SessionObject* session_object, short session_udp_port);
 
 	private:
 		inline void SetWorkerThreadHandle(const HANDLE& worker_thread_handle) { m_worker_thread_handle = worker_thread_handle; }
@@ -52,8 +57,10 @@ namespace AYA
 		SessionObjectManager m_session_object_manager;
 		HANDLE m_worker_thread_handle;
 
+		std::queue<UdpSocketPotiner> m_udp_socket_queue;
 	private:
 		short m_port;
+		short m_udp_port_begin;
 		int m_max_client;
 	};
 }

@@ -1,7 +1,6 @@
+#include "stdafx.h"
 #include "Logger.h"
-#include <stdarg.h>
-#include <tchar.h>
-#include <Windows.h>
+
 
 
 

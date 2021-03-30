@@ -11,5 +11,6 @@ namespace AYA
 		int Worker_Thread_Count = 0;
 		int Max_Client = 0;
 		short Port = 0;
+		short Udp_Port_Begin = 0;
 	};
 }

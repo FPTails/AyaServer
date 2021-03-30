@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "AyaBufferStream.h"
 #include "./AyaBuffer.h"
 

@@ -12,6 +12,8 @@ namespace AYA
 		SEND,
 		RECV,
 		DISCONNECT,
+		RECV_FROM,
+		SEND_TO,
 	};
 
 	class SessionObject;
@@ -23,5 +25,6 @@ namespace AYA
 		OVERLAPPED_IO_TYPE IOType;
 		SessionObject* SessionObject;
 		Buffer Buffer;
+		bool IsTcp;
 	};
 }

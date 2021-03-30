@@ -1,6 +1,6 @@
+#include "stdafx.h"
 #include "AyaAccepter.h"
-#include <MSWSock.h>
-#include <WinSock2.h>
+
 
 
 namespace AYA
@@ -10,6 +10,7 @@ namespace AYA
 		m_worker_thread_handle = nullptr;
 		m_port = 0;
 		m_max_client = 0;
+		m_udp_port_begin = 0;
 	}
 
 	bool Accepter::Init(AccepterInitData& accpeter_init_data)
@@ -17,6 +18,7 @@ namespace AYA
 		SetPort(accpeter_init_data.Port);
 		SetMaxClient(accpeter_init_data.Max_Client);
 		SetWorkerThreadHandle(accpeter_init_data.Worker_Thread_Handle);
+		m_udp_port_begin = accpeter_init_data.UdpPortBegin;
 
 		return true;
 	}
@@ -110,10 +112,17 @@ namespace AYA
 		for (int i = 0; i < max_client_count; ++i)
 		{
 			auto session_object = PopClientSessionObject();
+			short curr_udp_port = m_udp_port_begin + i;
 
 			if (false == PostAcceptForSession(session_object.get()))
 			{
 				printf("AccpetEx Fail : %d\n", WSAGetLastError());
+				return false;
+			}
+
+			if (false == InitSessionUdpSocket(session_object.get(), curr_udp_port))
+			{
+				printf("Init Udp Socket Fail : %d\n", WSAGetLastError());
 				return false;
 			}
 		}
@@ -154,6 +163,32 @@ namespace AYA
 		if (is_failed_accept)
 		{
 			printf("AccpetEx Fail : %d\n", WSAGetLastError());
+			return false;
+		}
+
+		return true;
+	}
+
+	bool Accepter::InitSessionUdpSocket(SessionObject* session_object, short session_udp_port)
+	{
+		SocketOption socket_option;
+		socket_option.Port = session_udp_port;
+		socket_option.Is_Listen = true;
+
+	 	auto& udp_socket = session_object->GetUdpSocket();
+
+		udp_socket.SetSocketOption(socket_option);
+
+		SOCKADDR_IN server_addrin;
+		server_addrin.sin_family = AF_INET;
+		server_addrin.sin_port = htons(session_udp_port);
+		server_addrin.sin_addr.s_addr = htonl(INADDR_ANY);
+
+		int bind_result = bind(udp_socket.GetSocketHandle(), (SOCKADDR*)&server_addrin, sizeof(SOCKADDR_IN));
+
+		if (0 != bind_result)
+		{
+			printf("Udp Socket Bind Fail. Session : %d, Error : %d\n", session_object->GetSessionIndex(), WSAGetLastError());
 			return false;
 		}
 

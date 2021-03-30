@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "AyaBuffer.h"
 
 
@@ -6,8 +7,6 @@ namespace AYA
 	void Buffer::InitDefaultMember()
 	{
 		m_data_size = 0;
-		/*m_buffer_size = 0;
-		m_buffer_array = nullptr;*/
 	}
 
 	Buffer::Buffer()
@@ -33,8 +32,6 @@ namespace AYA
 		m_data_size = target_data_size;
 
 		m_memory_block.CopyMemoryBlock(target_address, target_data_size);
-
-		// std::memcpy(m_buffer_array, original_buffer_address, original_buffer_data_size);
 	}
 
 	Buffer::Buffer(const Buffer& p)
@@ -51,17 +48,8 @@ namespace AYA
 
 	void Buffer::Release()
 	{
-		/*if (nullptr != m_buffer_array)
-		{
-			delete[] m_buffer_array;
-			m_buffer_array = nullptr;
-		}
-		*/
-
 		MemoryBlockPool::GetInstance()->Push(m_memory_block);
-
 		m_data_size = 0;
-		// m_buffer_size = 0;
 	}
 
 
@@ -95,8 +83,6 @@ namespace AYA
 		}
 
 		m_memory_block.CopyMemoryBlock(org_buffer.GetBuffer(), org_buffer.GetDataSize());
-
-		// std::memcpy(m_buffer_array, org_buffer.GetBuffer(), org_buffer.GetDataSize());
 
 		m_data_size = 0;
 		m_data_size = org_buffer.GetDataSize();

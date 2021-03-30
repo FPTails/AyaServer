@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "AyaFrameworkInfo.h"
 
 namespace AYA

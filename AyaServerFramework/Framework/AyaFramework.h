@@ -1,10 +1,7 @@
 #pragma once
-#include "../Core/CommonHeader/CommonHeader.h"
+
 #include "./AyaFrameworkInfo.h"
 #include "../Network/ServerObject/AyaServerObject.h"
-#include <winsock2.h>
-
-#pragma comment(lib, "Ws2_32.lib")
 
 namespace AYA
 {

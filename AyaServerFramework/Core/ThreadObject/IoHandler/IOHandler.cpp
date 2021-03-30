@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "IOHandler.h"
 #include "../../../Network/Session/SessionObject.h"
 #include "../../../Network/Acceptor/AyaAccepter.h"
@@ -36,6 +37,8 @@ namespace AYA
 		m_io_handler_dictionary[OVERLAPPED_IO_TYPE::DISCONNECT] = &IoHandler::HandleDisconnect;
 		m_io_handler_dictionary[OVERLAPPED_IO_TYPE::RECV] = &IoHandler::HandleRecieveMessage;
 		m_io_handler_dictionary[OVERLAPPED_IO_TYPE::SEND] = &IoHandler::HandleSendComplete;
+		m_io_handler_dictionary[OVERLAPPED_IO_TYPE::RECV_FROM] = &IoHandler::HandleRecieveFromMessage;
+		m_io_handler_dictionary[OVERLAPPED_IO_TYPE::SEND_TO] = &IoHandler::HandleSendToComplete;
 	}
 
 	bool IoHandler::IsDiconnectionCompletion(IORequestData& completion_result_data, OverlappedData* per_io_data)
@@ -74,12 +77,13 @@ namespace AYA
 
 		auto io_hanlder_finder = m_io_handler_dictionary.find(io_type);
 
-		if (m_io_handler_dictionary.end() != io_hanlder_finder)
+		if (m_io_handler_dictionary.end() == io_hanlder_finder)
 		{
-			auto io_handler = io_hanlder_finder->second;
-
-			(this->*io_handler)(completion_result_data, per_io_data);
+			return;
 		}
+
+		auto io_handler = io_hanlder_finder->second;
+		(this->*io_handler)(completion_result_data, per_io_data);
 	}
 
 	void IoHandler::HandleAccept(IORequestData& completion_result_data, OverlappedData* io_data)
@@ -115,5 +119,24 @@ namespace AYA
 		m_job_scheduler->PushJob(job_data);
 
 		session_object->OnRecieve();
+	}
+
+	void IoHandler::HandleSendToComplete(IORequestData& completion_result_data, OverlappedData* io_data)
+	{
+		auto session_object = io_data->SessionObject;
+		session_object->OnSendComplete();
+	}
+
+	void IoHandler::HandleRecieveFromMessage(IORequestData& completion_result_data, OverlappedData* io_data)
+	{
+		auto session_object = io_data->SessionObject;
+		Buffer recieved_buffer(io_data->WSABuffer.buf, completion_result_data.Byte_Transferred);
+
+		JobData job_data;
+		job_data.RecievedBuffer = recieved_buffer;
+		job_data.RecievedSession = session_object;
+		m_job_scheduler->PushJob(job_data);
+
+		session_object->OnRecieveFrom();
 	}
 }

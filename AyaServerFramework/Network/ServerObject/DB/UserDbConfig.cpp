@@ -1,6 +1,5 @@
+#include "stdafx.h"
 #include "UserDbConfig.h"
-#include <Windows.h>
-#include <atlstr.h>
 #include "../../../Util/Path/SystemPath.h"
 
 UserDBConfig::UserDBConfig()

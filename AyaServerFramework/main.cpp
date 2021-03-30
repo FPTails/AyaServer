@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include "stdafx.h"
+
 #include "Framework/AyaFramework.h"
 
 void main()

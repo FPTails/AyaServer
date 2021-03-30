@@ -1,6 +1,7 @@
+#include "stdafx.h"
 #include "UserDbExecutor.h"
-#include <atlstr.h> 
-// #include <atlconv.h>
+
+
 
 bool UserDBExecutor::SelectPassword(const std::wstring& user_id, std::wstring& out_selected_password)
 {

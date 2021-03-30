@@ -1,12 +1,7 @@
+#include "stdafx.h"
 #include "AyaFramework.h"
-
-#include <thread>
-#include <process.h>
-#include <stdlib.h>
-#include <winsock2.h>
-#include <MSWSock.h>
+#include "Util/System/System.h"
 #include "../Network/ServerObject/ServerJob/GameServerJob.h"
-#include "../Util/System/System.h"
 
 namespace AYA
 {
@@ -66,6 +61,7 @@ namespace AYA
 		const int DEFAULT_FRAMEWORK_MAX_CLIENT = 1;
 		const int DEFAULT_FRAMEWORK_PORT = 11021;
 		const int DEFAULT_JOB_THREAD_COUNT = 1;
+		const int DEFAULT_FRAMEWORK_UDP_PORT_BEGIN = 11022;
 
 		ServerInitData server_init_data;
 		server_init_data.Job = new GameServerJob();
@@ -73,6 +69,7 @@ namespace AYA
 		server_init_data.Max_Client =  DEFAULT_FRAMEWORK_MAX_CLIENT;
 		server_init_data.Port = DEFAULT_FRAMEWORK_PORT;
 		server_init_data.Worker_Thread_Count = Util::GetSystemCoreCount() * 2;
+		server_init_data.Udp_Port_Begin = DEFAULT_FRAMEWORK_UDP_PORT_BEGIN;
 
 		m_server_object.Init(server_init_data);
 	}

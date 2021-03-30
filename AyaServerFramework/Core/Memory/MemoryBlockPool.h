@@ -1,8 +1,9 @@
 #pragma once
 
 #include "./MemoryBlock.h"
-#include <list>
 #include "../../Util/Singleton/Singleton.h"
+
+#include <list>
 #include <mutex>
 
 namespace AYA

@@ -1,6 +1,6 @@
+#include "stdafx.h"
 #include "AyaAddrin.h"
-#include <Ws2def.h>
-#include <WS2tcpip.h>
+
 
 namespace AYA
 {

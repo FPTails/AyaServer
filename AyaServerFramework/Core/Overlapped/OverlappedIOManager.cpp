@@ -1,4 +1,5 @@
-#include"OverlappedIOManager.h"
+#include "stdafx.h"
+#include "OverlappedIOManager.h"
 
 namespace AYA
 {

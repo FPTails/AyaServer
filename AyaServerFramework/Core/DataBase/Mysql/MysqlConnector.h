@@ -1,6 +1,5 @@
 #pragma once
 
-#include "./MysqlEssential.h"
 #include "../IDbConnector.h"
 
 namespace AYA

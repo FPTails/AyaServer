@@ -1,6 +1,6 @@
+#include "stdafx.h"
 #include "GameServerJob.h"
-#include <iostream>
-#include <fstream>
+
 #include "../../../Util/Buffer/AyaBufferStream.h"
 #include "../../../Util/Logger/Logger.h"
 

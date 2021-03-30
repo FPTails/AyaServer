@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include "WorkerThreadObject.h"
-#include <thread>
 #include "../../Network/Session/SessionObject.h"
 
 namespace AYA
